@@ -2,7 +2,7 @@
   <v-app>
       <NavBar v-if='Enter'/>
     <v-main>
-      <router-view :changeNavStatus="changeNavStatus"/>
+      <router-view :changeNavStatus="changeNavStatus" :removeNav="removeNav"/>
     </v-main>
     <Footer v-if='Enter'/>
   </v-app>
@@ -27,6 +27,9 @@ export default {
   methods:{
     changeNavStatus(){
       this.Enter = true;
+    },
+    removeNav(){
+      this.Enter = false;
     }
   }
 };
