@@ -1,4 +1,4 @@
-const PhotoLibrary = require('./model')
+const PhotoLibrary = require('./models')
 
 module.exports = {
     GetAll : (req,res) => PhotoLibrary.find({})

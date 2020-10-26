@@ -1,4 +1,4 @@
-const api = require('./controller');
+const api = require('./controllers');
 
 
 function router(app){
