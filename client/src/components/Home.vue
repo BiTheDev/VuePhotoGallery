@@ -4,3 +4,7 @@
          <router-link to='/main'><button><span>Enter</span></button></router-link>
     </div>
 </template>
+<script>
+export default {
+}
+</script>

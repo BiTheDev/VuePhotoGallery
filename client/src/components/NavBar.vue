@@ -26,9 +26,6 @@
 export default {
   data(){
     return{ 
-      items: [
-          'web', 'shopping', 'videos', 'images', 'news',
-        ],
     }
   }
 }
