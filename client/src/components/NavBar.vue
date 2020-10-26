@@ -13,8 +13,8 @@
       <v-spacer></v-spacer>
       <template v-slot:extension>
         <v-tabs align-with-title>
-          <v-tab>Home</v-tab>
-          <v-tab>Seattle</v-tab>
+          <v-tab to="/main">Home</v-tab>
+          <v-tab to="/CategoryPhoto/sample">Sample</v-tab>
           <v-tab>YellowStone</v-tab>
           <v-tab>California</v-tab>
         </v-tabs>
@@ -26,6 +26,7 @@
 export default {
   data(){
     return{ 
+
     }
   }
 }

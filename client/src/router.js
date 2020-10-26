@@ -26,7 +26,7 @@ export default new Router({
         component: MainContent
       },
       {
-        path: '/CategoryPhoto/:place',
+        path: '/CategoryPhoto/sample',
         name: 'PhotoCategory',
         component: CategoryPhoto
       },
