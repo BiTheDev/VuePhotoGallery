@@ -27,6 +27,10 @@ const PhotoSchema = new goose.Schema(
       data: Buffer,
       contentType: String,
     },
+    location:{
+      type:String,
+      required:[true, "Must contain a location where the photo is taken"]
+    }
   },
   { timestamps: true }
 );
