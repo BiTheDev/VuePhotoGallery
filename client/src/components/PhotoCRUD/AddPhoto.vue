@@ -23,11 +23,13 @@
         auto-grow
         prepend-icon="mdi-comment"
       ></v-textarea>
-      <!-- <vuetify-google-autocomplete
+      <vuetify-google-autocomplete
     id="map"
-    placeholder="Start typing"
+     classname="form-control"
+    placeholder="Enter Photo Taken location"
+    prepend-icon="mdi-map"
 >
-</vuetify-google-autocomplete> -->
+</vuetify-google-autocomplete>
 
       <v-file-input
         label="Image Upload"
