@@ -9,7 +9,7 @@
     >
       <v-text-field
         v-model="title"
-        :counter="10"
+        :counter="20"
         :rules="titleRules"
         label="Photo Title"
         required
@@ -23,6 +23,11 @@
         auto-grow
         prepend-icon="mdi-comment"
       ></v-textarea>
+      <!-- <vuetify-google-autocomplete
+    id="map"
+    placeholder="Start typing"
+>
+</vuetify-google-autocomplete> -->
 
       <v-file-input
         label="Image Upload"
@@ -56,7 +61,7 @@ export default {
     title: "",
     titleRules: [
       (v) => !!v || "Title is required",
-      (v) => (v && v.length <= 10) || "Title must be less than 10 characters",
+      (v) => (v && v.length <= 20) || "Title must be less than 20 characters",
     ],
     description: "",
     descRules: [
@@ -65,7 +70,8 @@ export default {
         (v && v.length >= 10) ||
         "Description must be greater than 10 characters",
     ],
-    location:"",
+    address: "",
+    apikey: "AIzaSyCPWhnFx-fEKNaLKf1MDzHCS1HXvkizzz0",
   }),
   methods: {
     validate() {
