@@ -24,12 +24,16 @@
         prepend-icon="mdi-comment"
       ></v-textarea>
       <vuetify-google-autocomplete
-    id="map"
-     classname="form-control"
-    placeholder="Enter Photo Taken location"
-    prepend-icon="mdi-map"
->
-</vuetify-google-autocomplete>
+        id="map"
+        v-model="location"
+        :rules="locationRules"
+        required
+        classname="form-control"
+        placeholder="Enter Photo Taken location"
+        prepend-icon="mdi-map"
+        types="(cities)"
+      >
+      </vuetify-google-autocomplete>
 
       <v-file-input
         label="Image Upload"
@@ -72,8 +76,8 @@ export default {
         (v && v.length >= 10) ||
         "Description must be greater than 10 characters",
     ],
-    address: "",
-    apikey: "AIzaSyCPWhnFx-fEKNaLKf1MDzHCS1HXvkizzz0",
+    location: "",
+    locationRules: [(v) => !!v || "Location is required"],
   }),
   methods: {
     validate() {
