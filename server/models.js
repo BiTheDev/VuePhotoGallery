@@ -9,28 +9,23 @@ goose.connect(
 
 const PhotoSchema = new goose.Schema(
   {
-    _id: {
-      type: String,
-    },
-    name: {
+    Title: {
       type: String,
       required: [true, "Photo must contain a Name"],
       minlength: [3, "Photo name must be longer than 3 characters"],
       unique: true,
     },
-    description: {
+    Description: {
       type: String,
       required: [true, "a Photo must contain a description"],
       min: [5, "minimum 5 character length"],
     },
-    img: {
-      data: Buffer,
-      contentType: String,
+    Location: {
+      type: String,
     },
-    location:{
-      type:String,
-      required:[true, "Must contain a location where the photo is taken"]
-    }
+    Image: {
+      type:Object
+    },
   },
   { timestamps: true }
 );

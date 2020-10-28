@@ -8,7 +8,7 @@
       class="pa-md-4 mx-auto formclass d-flex flex-column justify-space-around"
     >
       <v-text-field
-        v-model="title"
+        v-model="PhotoDetail.title"
         :counter="20"
         :rules="titleRules"
         label="Photo Title"
@@ -16,7 +16,7 @@
         prepend-icon="mdi-pencil"
       ></v-text-field>
       <v-textarea
-        v-model="description"
+        v-model="PhotoDetail.description"
         :rules="descRules"
         label="Description"
         required
@@ -25,7 +25,7 @@
       ></v-textarea>
       <vuetify-google-autocomplete
         id="map"
-        v-model="location"
+        v-model="PhotoDetail.location"
         :rules="locationRules"
         required
         classname="form-control"
@@ -36,43 +36,39 @@
       </vuetify-google-autocomplete>
 
       <v-file-input
-        v-model="image"
         label="Image Upload"
         filled
         prepend-icon="mdi-camera"
-        @change="getInfo"
       ></v-file-input>
 
       <div class="btns d-flex flex-row justify-space-between">
 
+        <v-btn color="success" @click="createNewPhoto">
+            Submit
+        </v-btn>
         <v-btn color="error" class="mr-4" @click="reset"> Reset Form </v-btn>
 
-        <v-btn color="warning" @click="resetValidation">
-          Reset Validation
-        </v-btn>
       </div>
     </v-form>
   </div>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
   data: () => ({
     valid: true,
-    title: "",
     titleRules: [
       (v) => !!v || "Title is required",
       (v) => (v && v.length <= 20) || "Title must be less than 20 characters",
     ],
-    description: "",
     descRules: [
       (v) => !!v || "Description is required",
       (v) =>
         (v && v.length >= 10) ||
         "Description must be greater than 10 characters",
     ],
-    location: "",
     locationRules: [(v) => !!v || "Location is required"],
-    image:[],
   }),
   methods: {
     reset() {
@@ -81,12 +77,6 @@ export default {
     resetValidation() {
       this.$refs.form.resetValidation();
     },
-    getInfo(){
-        console.log(this.title)
-        console.log(this.description)
-        console.log(this.location)
-        console.log(this.image)
-    }
   },
   
 };
