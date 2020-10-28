@@ -36,6 +36,7 @@
       </vuetify-google-autocomplete>
 
       <v-file-input
+      v-model="PhotoDetail.image"
         label="Image Upload"
         filled
         prepend-icon="mdi-camera"
@@ -58,6 +59,7 @@ import axios from 'axios'
 export default {
   data: () => ({
     valid: true,
+    PhotoDetail:{title: "", description: "", location: "", image: null},
     titleRules: [
       (v) => !!v || "Title is required",
       (v) => (v && v.length <= 20) || "Title must be less than 20 characters",
@@ -77,6 +79,26 @@ export default {
     resetValidation() {
       this.$refs.form.resetValidation();
     },
+    createNewPhoto(){
+        // const formData = new FormData()
+        // console.log(this.PhotoDetail.image)
+        // formData.append('Image', this.PhotoDetail.image)
+        // console.log(formData.values());
+        let newPhoto = {
+            Title: this.PhotoDetail.title,
+            Description: this.PhotoDetail.description,
+            Location: this.PhotoDetail.location,
+            Image: this.PhotoDetail.image
+        }
+        console.log(newPhoto)
+        axios.post('http://localhost:5000/api/NewPhoto', newPhoto)
+        .then((response) =>{
+            console.log(response)
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
   },
   
 };

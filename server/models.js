@@ -24,7 +24,7 @@ const PhotoSchema = new goose.Schema(
       type: String,
     },
     Image: {
-      type:Object
+     type: String
     },
   },
   { timestamps: true }
