@@ -36,20 +36,14 @@
       </vuetify-google-autocomplete>
 
       <v-file-input
+        v-model="image"
         label="Image Upload"
         filled
         prepend-icon="mdi-camera"
+        @change="getInfo"
       ></v-file-input>
 
       <div class="btns d-flex flex-row justify-space-between">
-        <v-btn
-          :disabled="!valid"
-          color="success"
-          class="mr-4"
-          @click="validate"
-        >
-          Validate
-        </v-btn>
 
         <v-btn color="error" class="mr-4" @click="reset"> Reset Form </v-btn>
 
@@ -78,18 +72,23 @@ export default {
     ],
     location: "",
     locationRules: [(v) => !!v || "Location is required"],
+    image:[],
   }),
   methods: {
-    validate() {
-      this.$refs.form.validate();
-    },
     reset() {
       this.$refs.form.reset();
     },
     resetValidation() {
       this.$refs.form.resetValidation();
     },
+    getInfo(){
+        console.log(this.title)
+        console.log(this.description)
+        console.log(this.location)
+        console.log(this.image)
+    }
   },
+  
 };
 </script>
 <style scoped>
