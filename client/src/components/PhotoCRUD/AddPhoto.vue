@@ -6,6 +6,7 @@
       v-model="valid"
       lazy-validation
       class="pa-md-4 mx-auto formclass d-flex flex-column justify-space-around"
+      enctype="multipart/form-data"
     >
       <v-text-field
         v-model="PhotoDetail.title"
@@ -40,6 +41,7 @@
         label="Image Upload"
         filled
         prepend-icon="mdi-camera"
+        @change=uploadImage
       ></v-file-input>
 
       <div class="btns d-flex flex-row justify-space-between">
@@ -51,13 +53,15 @@
 
       </div>
     </v-form>
+    <img :src="previewImage" class="uploading-image" />
+    <img src="../../../../uploads/tulip.jpg" class="uploading-image" />
   </div>
 </template>
 <script>
 import axios from 'axios'
-
 export default {
   data: () => ({
+    previewImage:null,
     valid: true,
     PhotoDetail:{title: "", description: "", location: "", image: null},
     titleRules: [
@@ -80,17 +84,23 @@ export default {
       this.$refs.form.resetValidation();
     },
     createNewPhoto(){
-        // const formData = new FormData()
-        // console.log(this.PhotoDetail.image)
-        // formData.append('Image', this.PhotoDetail.image)
-        // console.log(formData.values());
+        const formData = new FormData()
+        formData.append('image', this.PhotoDetail.image)
+        console.log(formData)
+        try{
+             axios.post('http://localhost:5000/upload', formData);
+             console.log('uploaded!')
+        }catch(err){
+            console.log(err);
+        }
+
         let newPhoto = {
             Title: this.PhotoDetail.title,
             Description: this.PhotoDetail.description,
             Location: this.PhotoDetail.location,
-            Image: this.PhotoDetail.image
+            ImageURL: '../../../../uploads/'+this.PhotoDetail.image.name
         }
-        console.log(newPhoto)
+
         axios.post('http://localhost:5000/api/NewPhoto', newPhoto)
         .then((response) =>{
             console.log(response)
@@ -98,7 +108,17 @@ export default {
         .catch((error)=>{
             console.log(error)
         })
-    }
+    },
+    uploadImage(e){
+                const image = e;
+                const reader = new FileReader();
+                reader.readAsDataURL(image);
+                reader.onload = e =>{
+                    this.previewImage = e.target.result;
+                    // console.log(this.previewImage);
+                };
+            }
+        
   },
   
 };
@@ -109,5 +129,9 @@ export default {
   border: black 1px solid;
   min-height: 600px;
   max-height: 100vh;
+}
+.uploading-image{
+    width:600px;
+    align-self: center;
 }
 </style>

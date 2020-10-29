@@ -23,7 +23,7 @@ const PhotoSchema = new goose.Schema(
     Location: {
       type: String,
     },
-    Image: {
+    ImageURL: {
      type: String
     },
   },
