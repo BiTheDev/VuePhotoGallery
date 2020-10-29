@@ -54,7 +54,6 @@
       </div>
     </v-form>
     <img :src="previewImage" class="uploading-image" />
-    <img src="../../../../uploads/tulip.jpg" class="uploading-image" />
   </div>
 </template>
 <script>
@@ -98,7 +97,7 @@ export default {
             Title: this.PhotoDetail.title,
             Description: this.PhotoDetail.description,
             Location: this.PhotoDetail.location,
-            ImageURL: '../../../../uploads/'+this.PhotoDetail.image.name
+            ImageURL: '../../../uploads/'+this.PhotoDetail.image.name
         }
 
         axios.post('http://localhost:5000/api/NewPhoto', newPhoto)

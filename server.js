@@ -31,7 +31,7 @@ app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
 
 var storage = multer.diskStorage(
     {
-        destination: './uploads/',
+        destination: './client/public/uploads',
         filename: function ( req, file, cb ) {
             //req.body is empty...
             //How could I get the new_file_name property sent from client here?
