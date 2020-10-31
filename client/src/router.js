@@ -41,7 +41,7 @@ export default new Router({
         component: AddPhoto
       },
       {
-        path: '/Admin/PhotoStudio',
+        path: '/Admin/PhotoStudio/:Photo_id',
         name: 'PhotoEditing',
         component: UpdatePhoto
       },
