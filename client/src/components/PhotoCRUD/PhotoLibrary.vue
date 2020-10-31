@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>Photo Library</h2>
-    <v-btn class="success mx-1 my-5" to="/Admin/PhotoCreation">Upload Photo</v-btn>
+    <h1 class="text-center">Photo Library</h1>
+    <v-btn depressed class="success mx-1 my-5" to="/Admin/PhotoCreation">Upload Photo</v-btn>
     <v-simple-table>
       <template v-slot:default>
         <thead>
@@ -20,7 +20,7 @@
             <td>{{ item.Description }}</td>
             <td>
               <v-dialog v-model="dialog[item.Title]" width="600px" :key="item.Title">
-                  <v-btn color="primary" dark slot="activator" @click="$set(dialog, item.Title, true)">
+                  <v-btn color="primary" depressed dark slot="activator" @click="$set(dialog, item.Title, true)">
                     View Image
                   </v-btn>
                 <v-card :id="item.Title">
