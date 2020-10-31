@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2>Photo Library</h2>
+    <v-btn class="success mx-1 my-5" to="/Admin/PhotoCreation">Upload Photo</v-btn>
     <v-simple-table>
       <template v-slot:default>
         <thead>
